@@ -142,7 +142,7 @@ function App() {
             />
           )
         })}
-        <PlayerImage src='https://raw.githubusercontent.com/DiegoLechuga75/LineApi/main/RepCo.png' alt='Reproductor' />
+        <PlayerImage src='https://raw.githubusercontent.com/DiegoLechuga75/ApiSpotify/main/RepCo.png' alt='Reproductor' />
       </StyledTracks>
       <TitleDatosCuriosos>Datos Curiosos</TitleDatosCuriosos>
       <DatosCuriosos />
