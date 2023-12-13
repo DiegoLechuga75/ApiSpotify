@@ -6,13 +6,9 @@ import ArtistData from './components/ArtistData';
 import AlbumData from './components/AlbumData';
 import DatosCuriosos from './components/DatosCuriosos';
 import styled from 'styled-components';
-import { Titles } from './UI/GlobalComponents';
+import { Titles, StyledAlbums, CenterSection} from './UI/GlobalComponents';
 
-const StyledAlbums = styled.div`
-  display: flex;
-  flex-wrap: wrap;
-  justify-content: center;
-`
+
 
 const StyledTracks = styled.div`
   display: flex;
@@ -21,10 +17,9 @@ const StyledTracks = styled.div`
   flex-direction: column;
   margin-top: 3rem;
   background-image: url('https://www.todofondos.net/wp-content/uploads/papel-arrugado-textura-dorada-scaled.jpg');
-  width: 30%;
+  width: fit-content;
   font-weight: bold;
-  margin-left: auto;
-  margin-right: auto;
+  padding: 0.5rem;
   box-shadow: -8px 22px 26px -3px rgba(0,0,0,0.75);
   -webkit-box-shadow: -8px 22px 26px -3px rgba(0,0,0,0.75);
   -moz-box-shadow: -8px 22px 26px -3px rgba(0,0,0,0.75);
@@ -32,9 +27,10 @@ const StyledTracks = styled.div`
 `
 
 const PlayerImage = styled.img`
-  display: block;
-  margin-left: auto;
-  margin-right: auto;
+  align-self: center;
+  @media screen and (max-width: 500px) {
+    width: 10rem;
+  }
 `
 
 const TitleDatosCuriosos = styled(Titles)`
@@ -78,11 +74,11 @@ function App() {
       .then(response => response.json())
       .then(data => data.artists.items[0].id)
 
-      let artistTitle = await fetch('https://api.spotify.com/v1/search?q=' + artistName + '&type=artist', artistParameters)
+    await fetch('https://api.spotify.com/v1/search?q=' + artistName + '&type=artist', artistParameters)
       .then(response => response.json())
       .then(data => setArtistName(data.artists.items[0].name))
 
-    let albums = await fetch('https://api.spotify.com/v1/artists/' + artistID + '/albums?include_groups=album&limit=50', artistParameters)
+    await fetch('https://api.spotify.com/v1/artists/' + artistID + '/albums?include_groups=album&limit=50', artistParameters)
       .then(response => response.json())
       .then(data => {
         console.log(data)
@@ -99,7 +95,7 @@ function App() {
       }
     }
 
-    let tracks = await fetch('https://api.spotify.com/v1/albums/' + albumID + '/tracks?limit=50', albumParameters)
+    await fetch('https://api.spotify.com/v1/albums/' + albumID + '/tracks?limit=50', albumParameters)
       .then(response => response.json())
       .then(data => {
         console.log(data)
@@ -131,19 +127,21 @@ function App() {
           )
         })}
       </StyledAlbums>
-      <StyledTracks>
-      <h2>Canciones del album seleccionado:</h2>
-        {tracks.map((track, index) => {
-          return(
-            <AlbumData 
-              songName={track.name}
-              preview={track.external_urls.spotify}
-              key={index}
-            />
-          )
-        })}
-        <PlayerImage src='https://raw.githubusercontent.com/DiegoLechuga75/ApiSpotify/main/RepCo.png' alt='Reproductor' />
-      </StyledTracks>
+      <CenterSection>
+        <StyledTracks>
+        <h2>Canciones del album seleccionado:</h2>
+          {tracks.map((track, index) => {
+            return(
+              <AlbumData 
+                songName={track.name}
+                preview={track.external_urls.spotify}
+                key={index}
+              />
+            )
+          })}
+          <PlayerImage src='https://raw.githubusercontent.com/DiegoLechuga75/ApiSpotify/main/RepCo.png' alt='Reproductor' />
+        </StyledTracks>
+        </CenterSection>
       <TitleDatosCuriosos>Datos Curiosos</TitleDatosCuriosos>
       <DatosCuriosos />
     </div>

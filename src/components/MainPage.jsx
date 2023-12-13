@@ -2,7 +2,7 @@ import styled from "styled-components"
 import { CenterSection, Text } from "../UI/GlobalComponents"
 
 const TextMP = styled(Text)`
-    margin: 3rem 10rem 0 10rem;
+    margin: 3rem 2rem 0 2rem;
     font-weight: bold;
     font-size: 1.3em;
 `

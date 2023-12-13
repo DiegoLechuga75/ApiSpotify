@@ -47,9 +47,9 @@ const FunFactsImage = styled.img`
 
 const DatosCuriosos = () => {
     return(
-        <>
-            <CenterSection>
-            <Container>
+    <>
+    <CenterSection>
+        <Container>
             <CardHover>
                 <Side>
                     <FrontTitle>Artic Monkeys</FrontTitle>
@@ -104,8 +104,8 @@ const DatosCuriosos = () => {
                 </BackSide>
             </CardHover>
         </Container>
-            </CenterSection>
-        </>
+    </CenterSection>
+    </>
     )
 }
 

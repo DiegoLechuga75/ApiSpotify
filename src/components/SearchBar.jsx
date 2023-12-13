@@ -7,11 +7,13 @@ const InputBar = styled.div`
 `
 
 const InputText = styled.input`
-    border-radius: 20px;
-    padding: 5px 80px;
+    padding: 0.5rem 3.5rem;
     text-align: center;
     font-weight: bolder;
     font-size: 1.2em;
+    ::placeholder{
+        color: black;
+    }
 `
 
 const SearchBar = (props) => {

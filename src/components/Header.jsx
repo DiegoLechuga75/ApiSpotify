@@ -6,6 +6,7 @@ import { Button } from "../UI/GlobalComponents";
 
 const HeaderStyle = styled.div`
     display: flex;
+    flex-wrap: wrap;
     justify-content: space-evenly;
     background-color: black;
     padding-bottom: 15px;

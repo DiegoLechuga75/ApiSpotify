@@ -3,6 +3,8 @@ import styled from "styled-components";
 const CenterSection = styled.section`
     display: flex;
     justify-content: center;
+    flex-wrap: wrap;
+    gap: 1rem;
     align-items: center;
     margin: 10px;
 `
@@ -44,6 +46,12 @@ const Button = styled.button`
     font-size: 1.2em;
 `
 
+const StyledAlbums = styled.div`
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+`
+
 export {
     Container,
     Card,
@@ -51,4 +59,5 @@ export {
     Text,
     Titles,
     Button,
+    StyledAlbums,
 }
